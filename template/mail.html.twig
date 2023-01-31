@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    <body>
+        <h1 style="margin:0 0 10px 0">Authorized Borrower Form</h1>
+        <p><strong>If you did not agree to this proxy please contact the Circulation Desk immediately</strong></p>
+        <p style="margin:0 0 10px 0">To allow someone you authorize to borrow and/or place holds on materials in your name, we need the following:</p>
+        <ul style="margin-top:0;margin-bottom:10px">
+            <li>Please fill in the form below.</li>
+            <li><em>Permission time granted should not exceed one year.</em></li>
+            <li>Inform the authorized person that the staff at the Circulation Desk will ask them to present their photo ID at the time they are checking out materials in your name.</li>
+            <li>If at any time you have questions regarding these procedures or you would like to have an updated list of materials checked out in your name, please call 419-372-2051 or email  <a href="mailto:circdesk@bgsu.edu">circdesk@bgsu.edu</a>.</li>
+        </ul>
+        <p style="margin:0 0 10px 0">The form will be sent to the library circulation desk and copied to the two people named below. The agreement is active as soon as that email is received.</p>
+        <p style="margin:0 0 10px 0"><strong>It will be your responsibility</strong> to communicate to your authorized borrower any guidelines and/or limitations within which they may operate.</p>
+        <p style="margin:0 0 20px 0">Thank you for your cooperation and continued support of BGSU University Libraries.</p>
+        <p style="margin:0 0 20px 0">
+            <strong>Authorization granted by:</strong><br>
+            {{ granted_by_name }}<br>
+            {{ granted_by_id }}<br>
+            <a href="mailto:{{ granted_by_email }}">{{ granted_by_email }}</a>
+        </p>
+        <p style="margin:0 0 20px 0">
+            <strong>Authorization granted to:</strong><br>
+            {{ granted_to_name }}<br>
+            {{ granted_to_id }}<br>
+            <a href="mailto:{{ granted_to_email }}">{{ granted_to_email }}</a>
+        </p>
+        <p style="margin:0 0 10px 0">This permission is to <strong>expire</strong> {{ expire|date('F j, Y') }}. (Time granted should not exceed one year).</p>
+        <p style="margin:0 0 10px 0"><strong>I understand that by granting permission, I am assuming responsibility for all materials checked out in my name.</strong></p>
+    </body>
+</html>
