@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
+use Lits\Config\FormConfig;
 use Lits\Config\FrameworkConfig;
+use Lits\Config\MailConfig;
 use Lits\Config\SessionConfig;
 use Lits\Config\TemplateConfig;
 use Lits\Framework;

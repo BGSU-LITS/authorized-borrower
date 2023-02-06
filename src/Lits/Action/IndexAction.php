@@ -17,7 +17,6 @@ use Slim\Http\Response;
 use Slim\Http\ServerRequest;
 
 use function Safe\date;
-use function Safe\preg_match;
 use function Safe\strtotime;
 
 final class IndexAction extends Action
@@ -116,10 +115,10 @@ final class IndexAction extends Action
 
         $id = $post['granted_' . $person . '_id'];
 
-        if (\is_null($id) || preg_match('/^[0-9]{10}$/', $id) === 0) {
+        if (\is_null($id)) {
             throw new InvalidDataException(
                 'Authorization granted ' . $person .
-                ': ID Number must be ten digits'
+                ': ID Number must be specified'
             );
         }
 
