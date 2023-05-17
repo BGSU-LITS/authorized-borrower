@@ -10,7 +10,7 @@
     ],
     "require": {
         "php": "^7.4",
-        "bgsu-lits/framework": "^1.11",
+        "bgsu-lits/framework": "^1.12",
         "bgsu-lits/framework-mail": "^1.0"
     },
     "require-dev": {
