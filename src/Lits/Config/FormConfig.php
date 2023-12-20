@@ -11,6 +11,6 @@ final class FormConfig extends Config
     public string $subject = 'Authorized Borrower Form';
     public ?string $to = null;
 
-    /** @var string[] $cc */
+    /** @var array<string> $cc */
     public array $cc = [];
 }
