@@ -21,13 +21,9 @@ use function Safe\strtotime;
 
 final class IndexAction extends Action
 {
-    private Mail $mail;
-
-    public function __construct(ActionService $service, Mail $mail)
+    public function __construct(ActionService $service, private Mail $mail)
     {
         parent::__construct($service);
-
-        $this->mail = $mail;
     }
 
     /** @throws HttpInternalServerErrorException */
@@ -36,7 +32,7 @@ final class IndexAction extends Action
         try {
             $this->render(
                 $this->template(),
-                ['post' => $this->session->get('post')]
+                ['post' => $this->session->get('post')],
             );
 
             $this->session->remove('post');
@@ -44,7 +40,7 @@ final class IndexAction extends Action
             throw new HttpInternalServerErrorException(
                 $this->request,
                 null,
-                $exception
+                $exception,
             );
         }
     }
@@ -56,7 +52,7 @@ final class IndexAction extends Action
     public function post(
         ServerRequest $request,
         Response $response,
-        array $data
+        array $data,
     ): Response {
         $this->setup($request, $response, $data);
         $this->redirect();
@@ -80,7 +76,7 @@ final class IndexAction extends Action
             throw new HttpInternalServerErrorException(
                 $this->request,
                 'Could not process posted data',
-                $exception
+                $exception,
             );
         }
 
@@ -109,7 +105,7 @@ final class IndexAction extends Action
         if (\is_null($name)) {
             throw new InvalidDataException(
                 'Authorization granted ' . $person .
-                ': Name must be specified'
+                ': Name must be specified',
             );
         }
 
@@ -118,7 +114,7 @@ final class IndexAction extends Action
         if (\is_null($id)) {
             throw new InvalidDataException(
                 'Authorization granted ' . $person .
-                ': ID Number must be specified'
+                ': ID Number must be specified',
             );
         }
 
@@ -127,7 +123,7 @@ final class IndexAction extends Action
         if (\filter_var($email, \FILTER_VALIDATE_EMAIL) === false) {
             throw new InvalidDataException(
                 'Authorization granted ' . $person .
-                ': Email must be valid'
+                ': Email must be valid',
             );
         }
 
@@ -144,7 +140,7 @@ final class IndexAction extends Action
 
         if (\is_null($permission)) {
             throw new InvalidDataException(
-                'Terms must be acknowledged and agreed to'
+                'Terms must be acknowledged and agreed to',
             );
         }
 
@@ -162,7 +158,7 @@ final class IndexAction extends Action
 
         if (\is_null($value)) {
             throw new InvalidDataException(
-                'Expire time granted must be specified'
+                'Expire time granted must be specified',
             );
         }
 
@@ -173,7 +169,7 @@ final class IndexAction extends Action
             $expire > date('Y-m-d', strtotime('+1 year'))
         ) {
             throw new InvalidDataException(
-                'Expire time granted should not exceed one year'
+                'Expire time granted should not exceed one year',
             );
         }
 
@@ -195,7 +191,7 @@ final class IndexAction extends Action
         ) {
             throw new HttpInternalServerErrorException(
                 $this->request,
-                'Could not address mail'
+                'Could not address mail',
             );
         }
 
@@ -217,14 +213,14 @@ final class IndexAction extends Action
             throw new HttpInternalServerErrorException(
                 $this->request,
                 'Could not send mail',
-                $exception
+                $exception,
             );
         }
 
         $this->message(
             'success',
             'Your ' . $this->settings['form']->subject .
-            ' has been sent. You may send another request below.'
+            ' has been sent. You may send another request below.',
         );
     }
 }
