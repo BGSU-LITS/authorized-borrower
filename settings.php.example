@@ -50,10 +50,10 @@ return function (Framework $framework): void {
 
     assert($settings['mail'] instanceof MailConfig);
 
-    // DSN for mail sending server. Must be specified for password change.
+    // DSN for mail sending server.
     $settings['mail']->dsn = 'smtp://smtp.example.edu:25';
 
-    // Default from address for emails. Must be specified for password change.
+    // Default from address for emails.
     $settings['mail']->from = 'Example University Libraries <lib@example.edu>';
 
     assert($settings['form'] instanceof FormConfig);
